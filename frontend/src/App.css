@@ -1,0 +1,103 @@
+:root {
+  --gold-grad: linear-gradient(135deg, #fff5c0 0%, #e7c463 35%, #d4af37 55%, #aa771c 80%, #fdf0a6 100%);
+}
+
+html,
+body {
+  background: #050505;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+}
+
+::selection {
+  background: #d4af37;
+  color: #050505;
+}
+
+.font-display {
+  font-family: "Bodoni Moda", serif;
+}
+
+.font-body {
+  font-family: "Jost", sans-serif;
+}
+
+.gold-text {
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-fill {
+  background: var(--gold-grad);
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.35);
+}
+
+.countdown-num {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  filter: drop-shadow(0 0 22px rgba(217, 160, 40, 0.35));
+}
+
+.glass-pill {
+  background: rgba(10, 10, 10, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  font-family: "Jost", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ctrl-btn {
+  transition: background-color 0.3s ease;
+}
+
+.ctrl-btn:hover {
+  background-color: rgba(212, 175, 55, 0.12);
+}
+
+.stage-glow {
+  background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
+}
+
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#brs-dust canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.marquee-track {
+  animation: marquee 70s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

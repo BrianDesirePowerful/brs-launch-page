@@ -1,0 +1,91 @@
+{
+  "project_name": "BRS Management Solutions LLC — Cinematic Launch & Countdown Experience",
+  "archetype": "LUXURY & CINEMATIC (Black & Gold)",
+  "context": "Marketing / Launch Page (Single-screen full viewport experience with optional details section)",
+  "tech_stack": {
+    "framework": "React.js (JavaScript, .js files)",
+    "styling": "Tailwind CSS",
+    "components": "Shadcn/UI primitives + HTML5 Canvas + tsParticles",
+    "animation": "Framer Motion, Canvas 2D API, tsParticles"
+  },
+  "typography": {
+    "headline_font": "'Bodoni Moda', 'Cinzel', 'Playfair Display', serif",
+    "body_font": "'Plus Jakarta Sans', 'Inter', sans-serif",
+    "mono_font": "'JetBrains Mono', 'Fira Code', monospace",
+    "hierarchy": {
+      "brand_title": "text-2xl sm:text-3xl tracking-[0.3em] uppercase font-serif text-amber-200/90",
+      "countdown_numbers": "text-4xl sm:text-6xl md:text-7xl font-mono font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-amber-100 via-amber-300 to-yellow-600 drop-shadow-[0_0_25px_rgba(217,119,6,0.4)]",
+      "countdown_labels": "text-xs sm:text-sm tracking-[0.25em] uppercase font-sans text-amber-400/80 font-semibold",
+      "section_heading": "text-3xl sm:text-5xl font-serif tracking-wide text-amber-100",
+      "body_text": "text-sm sm:text-base font-sans leading-relaxed text-zinc-400"
+    }
+  },
+  "colors": {
+    "background": "#050505",
+    "surface_dark": "#0d0d0e",
+    "gold_primary": "#f59e0b",
+    "gold_bright": "#fef08a",
+    "gold_deep": "#b45309",
+    "gold_metallic_gradient": "linear-gradient(135deg, #FFF5C0 0%, #D4AF37 40%, #AA771C 75%, #FDF0A6 100%)",
+    "gold_border": "rgba(212, 175, 55, 0.25)",
+    "gold_glow": "rgba(245, 158, 11, 0.35)",
+    "text_main": "#f4f4f5",
+    "text_muted": "#a1a1aa"
+  },
+  "controls_and_layout": {
+    "header_nav": "Fixed top bar with glassmorphism backdrop-blur-md bg-black/40 border-b border-amber-500/10 px-6 py-4 flex justify-between items-center z-50",
+    "control_panel": "Floating glass pill or bottom-center bar with controls: Replay Intro Button, Formation Selector (Circular Halo vs Cinematic Oval), Audio Toggle Hook, Reduced Motion indicator",
+    "countdown_clock": "Centrally framed element aligned inside the Cinematic Oval or Circular Halo canvas region",
+    "responsive_rules": "Mobile viewport padding p-4, max-h-[80vh] for visual assets, stack countdown units gracefully on small screens (2x2 grid on tiny mobile, 1x4 horizontal row on sm+)"
+  },
+  "motion_and_effects": {
+    "sequence_timing": {
+      "phase_1_meteor": "0ms - 1200ms: Diagonal golden shooting star streaks at extreme speed across full screen, peak brightness, screen shake (intensity 12px blur + 8px offset), flash layer, dramatic shockwave ring.",
+      "phase_2_star_formation": "1200ms - 4500ms: 5-pointed golden stars emerge from shockwave origin, traverse curved bezier choreography paths into selected formation (Cinematic Oval default or Circular Halo), twinkle & orbit smoothly.",
+      "phase_3_countdown_reveal": "3500ms - 5000ms: Framer motion fade-in and scale-up of countdown clock, BRS brand title, and action controls."
+    },
+    "canvas_meteor_specs": "Shockwave expansion radius r: 0 -> max(width, height)*0.8, screen shake duration 350ms, particle trail length 300px with gold/warm-white gradient.",
+    "star_shape_specs": "Draw true 5-pointed stars (outer radius, inner radius 0.4*outer radius, filled with metallic gold radial gradient and outer blur).",
+    "particles_js_integration": "tsParticles background layer beneath canvas stars with low opacity floating gold Dust/Constellation particles and subtle cursor repulsion/attraction.",
+    "audio_cue_system": "AudioHook context/event emitter exposing onMeteorStreak, onShockwave, onStarsFormed, onTimerTick for seamless audio attachment later."
+  },
+  "media_assets": [
+    {
+      "category": "hero_background_texture",
+      "url": "https://images.unsplash.com/photo-1703100822077-a766dc9608b9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBnb2xkJTIwc3RhciUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc5Mjg4NzY3NHww&ixlib=rb-4.1.0&q=85",
+      "description": "Dark luxury background with gold sparkles"
+    },
+    {
+      "category": "star_ornament",
+      "url": "https://images.unsplash.com/photo-1543962704-740f9931811d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBnb2xkJTIwc3RhciUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc5Mjg4NzY3NHww&ixlib=rb-4.1.0&q=85",
+      "description": "Geometric luxury gold star"
+    }
+  ],
+  "testing_and_accessibility": {
+    "data_testid_convention": "kebab-case, role-based identifiers for automated verification",
+    "required_test_ids": [
+      "launch-page-container",
+      "intro-canvas",
+      "particles-background",
+      "replay-intro-button",
+      "formation-toggle-circular",
+      "formation-toggle-oval",
+      "countdown-clock-container",
+      "countdown-days",
+      "countdown-hours",
+      "countdown-minutes",
+      "countdown-seconds",
+      "audio-toggle-button",
+      "brand-logo-header"
+    ],
+    "reduced_motion": "Detect prefers-reduced-motion; if enabled, skip meteor streak and jump directly to static star formation and countdown reveal."
+  },
+  "instructions_to_main_agent": [
+    "Ensure all React files use .js extension.",
+    "Do NOT change the luxurious black-and-gold color palette.",
+    "Integrate tsParticles for the ambient floating particle background.",
+    "Maintain the two star formation modes: Cinematic Oval (default on load) and Circular Halo.",
+    "Set the target launch date to 30 days from current time by default.",
+    "Include full data-testid attributes on key control elements."
+  ]
+}
