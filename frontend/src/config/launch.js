@@ -1,5 +1,6 @@
-// Temporary launch date (30 days from 2026-10-25). Replace with the official date when chosen.
-export const LAUNCH_DATE = new Date("2026-11-24T00:00:00");
+// Official launch: December 4, 2026, 12:00 AM Eastern Time (fixed instant, same for every visitor).
+export const LAUNCH_DATE = new Date("2026-12-04T00:00:00-05:00");
+export const LAUNCH_TIME_ZONE = "America/New_York";
 
 export const BRAND = {
   short: "BRS",

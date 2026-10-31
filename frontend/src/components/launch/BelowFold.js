@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { Logo } from "./Logo";
-import { BRAND, LAUNCH_DATE } from "../../config/launch";
+import { BRAND, LAUNCH_DATE, LAUNCH_TIME_ZONE } from "../../config/launch";
 
 const WORDS = [BRAND.name, "Launching Soon", "The Countdown Has Begun", "Mark The Date"];
 
@@ -22,7 +22,7 @@ const Marquee = () => (
   </div>
 );
 
-const fmt = (opts) => new Intl.DateTimeFormat("en-US", opts).format(LAUNCH_DATE);
+const fmt = (opts) => new Intl.DateTimeFormat("en-US", { ...opts, timeZone: LAUNCH_TIME_ZONE }).format(LAUNCH_DATE);
 const reveal = { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 } };
 
 const DateFeature = () => (

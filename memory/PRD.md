@@ -26,7 +26,9 @@ Modify existing project; preserve liked effects; commercially permitted assets/l
 ## Implemented (2026-10-25)
 - Meteor intro, five-point star formation (Oval default / Halo), particle field, countdown, Replay, Skip intro, formation toggle, reduced-motion (instant settled state), mobile layout, header, marquee, save-the-date section, footer, SVG logo + favicon.
 
+- Official launch date set (2026-10-31): 2026-12-04T00:00:00-05:00 (midnight ET), dates displayed in America/New_York. Continuous orbital star motion added.
+
 ## Backlog
-- P0: Set official launch date; add licensed soundtrack + SFX files to /public/audio and SOUNDTRACK config.
+- P0: Add licensed soundtrack + SFX files to /public/audio and SOUNDTRACK config.
 - P1: Email "notify me" signup; GitHub Pages deploy workflow.
 - P2: Launch-day "we're live" state when countdown hits zero; social share image.

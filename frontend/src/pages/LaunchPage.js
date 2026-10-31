@@ -10,7 +10,7 @@ import { BelowFold } from "../components/launch/BelowFold";
 import { useLenis } from "../hooks/useLenis";
 import { cues } from "../lib/cues";
 import { attachSoundtrack } from "../lib/soundtrack";
-import { BRAND, DEFAULT_FORMATION, LAUNCH_DATE } from "../config/launch";
+import { BRAND, DEFAULT_FORMATION, LAUNCH_DATE, LAUNCH_TIME_ZONE } from "../config/launch";
 
 const useTilt = (enabled) => {
   const rx = useMotionValue(0);
@@ -87,7 +87,7 @@ export default function LaunchPage() {
               </motion.div>
               <MaskLine show={revealed} delay={0.6}>
                 <span data-testid="hero-date-line" className="font-body text-[11px] uppercase tracking-[0.4em] text-amber-100/75 sm:text-xs">
-                  Launching {LAUNCH_DATE.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                  Launching {LAUNCH_DATE.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: LAUNCH_TIME_ZONE })}
                 </span>
               </MaskLine>
             </motion.div>
