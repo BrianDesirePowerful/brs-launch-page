@@ -101,6 +101,7 @@ export class StarEngine {
     this.morph = null;
     this.running = false;
     this.loop = this.loop.bind(this);
+    this.still = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     this.resize();
   }
 
@@ -166,6 +167,12 @@ export class StarEngine {
       ph: rand(0, TAU),
       gl: rand(0.2, 0.55),
       gph: rand(0, TAU),
+      ow: rand(0.25, 0.6),
+      oph: rand(0, TAU),
+      rw: rand(0.3, 0.7),
+      rph: rand(0, TAU),
+      fw: rand(0.4, 0.9),
+      fph: rand(0, TAU),
       trail: [],
     }));
     this.radii = this.targetRadii(this.formation);
@@ -371,10 +378,11 @@ export class StarEngine {
       const p = clamp(lt);
       const sweep = (1 - easeOutCubic(p)) * s.sweep * TAU * s.dir;
       const rs = easeOutBack(clamp(p * 1.05), 0.9);
-      const a = s.theta + sweep + swirl;
-      const x = P.x + rx * rs * Math.cos(a);
-      const y = P.y + ry * rs * Math.sin(a);
       const settled = clamp((lt - 1) * 1.5);
+      const o = this.orbit(s, lt, secs, settled);
+      const a = s.theta + sweep + swirl + o.angle;
+      const x = P.x + rx * rs * o.radial * Math.cos(a);
+      const y = P.y + ry * rs * o.radial * Math.sin(a) + o.float;
       const tw = Math.sin(secs * s.tw + s.ph);
       const alpha = clamp(p * 5) * (1 - settled * 0.28 * (0.5 + 0.5 * tw));
       const scale = (0.35 + 0.65 * easeOutCubic(clamp(p * 2))) * (1 + settled * 0.08 * tw);
@@ -396,6 +404,19 @@ export class StarEngine {
       if (settled > 0 && gl > 0.93) this.drawGlint(x, y, s.size, ((gl - 0.93) / 0.07) * settled);
     });
     ctx.restore();
+  }
+
+  // Continuous orbit after a star finishes its formation flight; velocity eases in from zero.
+  orbit(s, lt, secs, w) {
+    if (lt <= 1 || this.still) return { angle: 0, radial: 1, float: 0 };
+    const since = ((lt - 1) * TIMELINE.starDuration) / 1000;
+    const tau = 2.5;
+    const base = 0.07 * (since - tau * (1 - Math.exp(-since / tau)));
+    return {
+      angle: base + w * 0.03 * Math.sin(secs * s.ow + s.oph),
+      radial: 1 + w * 0.025 * Math.sin(secs * s.rw + s.rph),
+      float: w * 3 * Math.sin(secs * s.fw + s.fph),
+    };
   }
 
   drawTrail(tr, size, alpha) {
