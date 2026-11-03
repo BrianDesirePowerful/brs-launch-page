@@ -37,7 +37,7 @@ jobs:
       - name: Build website
         working-directory: frontend
         env:
-          PUBLIC_URL: /brs-launch-page
+          PUBLIC_URL: /
           CI: 'false'
         run: yarn build
 
